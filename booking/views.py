@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+
+from .decorators import unauthenticated_user
 from .forms import CreateBooking, CreateUserForm
 from .models import Booking
 from django.http import HttpResponse
@@ -34,6 +36,7 @@ def createBooking(request):
                 contactNumber=cd['contactNumber'],
                 email=cd['email'],
                 date_time=cd['date_time'],
+                user=request.user,
             )
             pc.save()
             messages.success(request, 'You booked an appointment!')
@@ -62,6 +65,7 @@ def registerPage(request):
     return render(request, 'accounts/register.html', context)
 
 
+@unauthenticated_user
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -84,5 +88,15 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+
+def userPage(request):
+    context = {}
+    return render(request, 'accounts/user.html', context)
+
+
+def myAccount(request):
+    context = {}
+    return render(request, 'website/myAccount.html', context)
 
 

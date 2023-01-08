@@ -22,10 +22,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('contact/', views.contact, name="contact"),
+    path('myAccount/', views.myAccount, name="my-account"),
     path('create-booking/', views.createBooking, name="create booking"),
 
     path('register/', views.registerPage, name="register"),
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
+    path('user/', views.userPage, name="user-page"),
+    # path('myAccount/', views.myAccount, name="my-account"),
 
 ]
