@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 
 from .decorators import unauthenticated_user
-from .forms import CreateBooking, CreateUserForm
+from .forms import CreateBooking, CreateUserForm, UpdateProfile
 from .models import Booking
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
@@ -95,8 +96,38 @@ def userPage(request):
     return render(request, 'accounts/user.html', context)
 
 
-def myAccount(request):
-    context = {}
-    return render(request, 'website/myAccount.html', context)
+# def myAccount(request):
+#     context = {'user': request.user}
+#     return render(request, 'website/myAccount.html', context)
+
+
+# @unauthenticated_user
+# def updateAccount(request):
+#     form = UpdateProfile()
+#     if request.method == 'POST':
+#         form = UpdateProfile(request.POST, instance=request.user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')
+#
+#     context = {'form': form}
+#     return render(request, 'website/myAccount.html', context)
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UpdateProfile(instance=request.user)
+        args = {'form': form}
+        return render(request, 'website/myAccount.html', args)
+
+
+
+
+
 
 

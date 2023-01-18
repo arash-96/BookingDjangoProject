@@ -116,10 +116,10 @@
                         <h1 class="mb-4">Book An Appointment</h1>
                         <form method="POST" action="{% url 'create booking' %}">
                             {% csrf_token %}
-                        <form>
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control bg-white border-0" placeholder="Name" name="first_name" style="height: 55px;">
+                                    {{form.username}}
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control bg-white border-0" placeholder="Surname" name="last_name"  style="height: 55px;">
@@ -147,7 +147,7 @@
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Make An Appointment</button>
                                 </div>
-                        </form>
+                            </form>
 
                         </div>
                     </div>
