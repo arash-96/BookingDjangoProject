@@ -33,7 +33,7 @@
                         <h1 class="mb-4">My Account</h1>
                         <form method="POST" action="">
                             {% csrf_token %}
-                            {{form.as_p}}
+
 <!--                            <div class="row g-3">-->
 <!--                                <div class="col-12 col-sm-6">-->
 <!--                                    <input type="text" class="form-control bg-white border-0" placeholder="username" name="username" value="{{request.user}}" style="height: 55px;">-->
@@ -44,7 +44,25 @@
 <!--                                <div class="col-12">-->
 <!--                                    <button class="btn btn-primary w-100 py-3" type="submit">Save</button>-->
 <!--                                </div>-->
-                            <button type="submit">Submit</button>
+                            <div class="input-group mb-3">
+							<div class="input-group-append" >
+                                <label>Username</label>
+							</div>
+                                <div style="margin-left:50px;">
+                                {{form.username}}
+                                </div>
+						    </div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<label>Email</label>
+							</div>
+                            <div style="margin-left:84px;">
+							    {{form.email}}
+                            </div>
+						</div>
+                            <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                </div>
 
                         </form>
 
