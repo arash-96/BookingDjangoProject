@@ -25,11 +25,12 @@ urlpatterns = [
     path('myAccount/', views.edit_profile, name="my-account"),
     # path('update-account/', views.edit_profile, name="update-account"),
     path('create-booking/', views.createBooking, name="create booking"),
+    path('my-booking', views.MyBooking, name="my-booking"),
 
     path('register/', views.registerPage, name="register"),
     path('login/', views.loginPage, name="login"),
     path('logout/', views.logoutUser, name="logout"),
     path('user/', views.userPage, name="user-page"),
-    # path('myAccount/', views.myAccount, name="my-account"),
+
 
 ]

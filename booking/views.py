@@ -96,22 +96,10 @@ def userPage(request):
     return render(request, 'accounts/user.html', context)
 
 
-# def myAccount(request):
-#     context = {'user': request.user}
-#     return render(request, 'website/myAccount.html', context)
+def MyBooking(request):
+    context = {}
+    return render(request, 'website/mybookings.html', context)
 
-
-# @unauthenticated_user
-# def updateAccount(request):
-#     form = UpdateProfile()
-#     if request.method == 'POST':
-#         form = UpdateProfile(request.POST, instance=request.user)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#
-#     context = {'form': form}
-#     return render(request, 'website/myAccount.html', context)
 
 def edit_profile(request):
     if request.method == 'POST':
