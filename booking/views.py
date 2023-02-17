@@ -97,7 +97,8 @@ def userPage(request):
 
 
 def MyBooking(request):
-    context = {}
+    bookings = Booking.objects.filter(user_id=request.user)
+    context = {'bookings': bookings}
     return render(request, 'website/mybookings.html', context)
 
 
